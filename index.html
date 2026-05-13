@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accept My Gift 💝</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      overflow: hidden;
+      padding: 20px;
+      position: relative;
+    }
+
+    body::before {
+      content: '💖 💝 💕 🎁 💘';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      font-size: 28px;
+      opacity: 0.08;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      pointer-events: none;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 35px 25px;
+      border-radius: 28px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 420px;
+      animation: pop 0.5s ease;
+      backdrop-filter: blur(10px);
+      z-index: 2;
+    }
+
+    @keyframes pop {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      margin-bottom: 18px;
+      color: #ff4d6d;
+      font-size: 2rem;
+      line-height: 1.3;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 22px;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px 18px;
+      border: none;
+      border-radius: 16px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .yes-btn {
+      background: linear-gradient(135deg, #ff4d6d, #ff758f);
+      color: white;
+      box-shadow: 0 8px 18px rgba(255, 77, 109, 0.35);
+    }
+
+    .yes-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .no-btn {
+      background: #f1f1f1;
+      color: #333;
+    }
+
+    .no-btn:hover {
+      background: #e3e3e3;
+    }
+
+    img {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 22px;
+      margin: 18px 0;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    video {
+      width: 100%;
+      border-radius: 20px;
+      margin-top: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (min-width: 600px) {
+      .button-group {
+        flex-direction: row;
+      }
+
+      button {
+        width: auto;
+        flex: 1;
+      }
+
+      h1 {
+        font-size: 2.3rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="page1">
+    <h1>🎁 Accept My Gift?</h1>
+    <p>I have something special for you 💖</p>
+    <div class="button-group">
+      <button class="yes-btn" onclick="showPrank()">Yes 💖</button>
+      <button class="no-btn" onclick="alert('No option is disabled 😆')">No 😅</button>
+    </div>
+  </div>
+
+  <div class="container hidden" id="page2">
+    <h1>😤 How Dare You!</h1>
+    <img src="https://media.tenor.com/q7oX6JqfT5AAAAAC/cat-angry.gif" alt="Funny Image">
+    <p>You clicked YES too fast 😂</p>
+    <div class="button-group">
+      <button class="yes-btn" onclick="showVideoPage()">Next 🎬</button>
+      <button class="no-btn" onclick="goBack()">Try Again 🔄</button>
+    </div>
+  </div>
+
+  <div class="container hidden" id="page3">
+    <h1>🎉 Surprise Video</h1>
+    <p>Now watch this 💕</p>
+
+    <video controls autoplay>
+      <source src="your-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <p style="margin-top: 15px; font-size: 14px; color: gray;">
+      Replace <b>your-video.mp4</b> with your own video file.
+    </p>
+  </div>
+
+  <script>
+    function showPrank() {
+      document.getElementById('page1').classList.add('hidden');
+      document.getElementById('page2').classList.remove('hidden');
+    }
+
+    function goBack() {
+      document.getElementById('page2').classList.add('hidden');
+      document.getElementById('page1').classList.remove('hidden');
+    }
+
+    function showVideoPage() {
+      document.getElementById('page2').classList.add('hidden');
+      document.getElementById('page3').classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>
